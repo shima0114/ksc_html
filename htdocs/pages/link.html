@@ -1,0 +1,80 @@
+<header>
+    <div class="page-header">
+        <h3 >LINK</h3>
+    </div>
+</header>
+<div class="container-fluid">
+    <div class="row">
+        <div class="container-fluid text-center">
+            <div class="border-bottom">相互リンクを歓迎いたします。</div>
+            <div>リンクをはる際は、必ず下記トップページにリンクするようにお願いいたします。</div>
+            <div class="add-spacing">
+                <table class="table text-center no-border-table">
+                    <tr>
+                        <td>
+                            船橋ＫＳＣ　（古和釜サッカークラブ）
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="/">http://funabashiksc.php.xdomain.jp/</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="/images/common/kscemb.jpg" width="96" height="115" border="0"><br>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div>お手数ですが、リンクした旨をメールして頂けると幸いです。</div>
+        </div>
+        <div id="render_area"></div>
+    </div>
+<script id="links" type="text/x-jsrender">
+{{for links}}
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading panel-pointer">
+                <div class="accordion-toggle panel-title">
+                    <div data-toggle="collapse" data-target="#linkCollapse_{{:#index}}" class="collapsed">{{:title}}</div>
+                </div>
+            </div>
+            <div id="linkCollapse_{{:#index}}" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="container-fluid">
+                        <div class="row panel-group">
+                            {{for contents ~len=contents.length ~gid=group_code}}
+                            {{if url == null}}<div>編集中</div>
+                            {{else}}
+                            <div class="col-xs-12 col-sm-6 col-md-4 flex-text">
+                                <a href="{{:url}}" target="_blank">{{:name}}</a>
+                                {{if comment}}
+                                <i class="fa fa-comment-o" data-toggle="popover" data-content='{{:comment}}'></i>
+                                {{/if}}
+                            </div>
+                            {{/if}}
+                            {{if ~gid == "shop" && ~len == #getIndex()+1}}
+                            <div class="col-xs-12 col-sm-6 col-md-4 flex-text" data-id={{:#getIndex()}}>
+                                <a href="http://www.fungoal.com/vigo.html" onclick="location.href='https://ssl.fungoal.com/affv2/tracker.php?a=vigo&amp;p=funabashiksc&amp;t=click&amp;guid=ON'; return false;" target="_blank">FUN GOAL</a>
+                                <i class="fa fa-comment-o" data-toggle="popover" data-content='サッカーゴール、トレーニング用品など。サッカー用品通販の専門店'></i>
+                            </div>
+                            {{/if}}
+                            {{/for}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{{/for}}
+</script>
+<script type="text/javascript">
+    addHover = function() {
+        $('.fa-comment-o').popover({
+            trigger: 'hover',
+            html: true,
+        });
+    };
+    renderTemplate("links", "/Link/lists/all", addHover);
+</script>
