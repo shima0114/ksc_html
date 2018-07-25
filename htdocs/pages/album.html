@@ -1,1 +1,98 @@
-工事中
+<!-- 選手一覧 -->
+<header>
+    <div class="page-header">
+        <h3 id="page-title">アルバム一覧</h3>
+    </div>
+</header>
+<div class="container-fluid row-eq-height">
+    <div id="render_area" class="row"></div>
+</div>
+<div class="text-center">
+    <button id="back-btn" class="btn btn-info hidden" onclick="listBack()">一覧に戻る</button>
+</div>
+
+<!-- 拡大表示モーダル -->
+<div class="modal fade" id="img_modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg modal-middle">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-image-area">
+                    <img id="album-image" src="" alt="Staff photo" class="img-responsive"/>
+                </div>
+            </div>
+            <div class="modal-img_footer">
+                <ul class="pager">
+                    <li class="previous img-scroll-prev"><a id="img-prev" href="javascript:void(0)" onclick="changeModalImage()">前へ</a></li>
+                    <li><button type="button" class="btn btn-success" data-dismiss="modal">Close</button></li>
+                    <li class="next img-scroll-next"><a id="img-next" href="javascript:void(0)" onclick="changeModalImage()">次へ</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JsRender template -->
+<script id="album_list" type="text/x-jsrender">
+  {{for album}}
+    <div class="col-xs-12">
+        <div class="bg-info">
+            <div>{{:year}}</div>
+        </div>
+        <ul class="">
+          {{for lists}}
+            <li class=""><a href="javascript:void(0)" onclick="showDetail({{:id}})">{{:title}}</a></li>
+          {{/for}}
+        </ul>
+    </div>
+  {{/for}}
+</script>
+<script id="album_detail" type="text/x-jsrender">
+  {{for album}}
+    <div class="col-xs-6 col-md-3 img-thmb">
+      <img src="{{:imgFile}}" alt="{{:title}}" class="img-responsive thumbnail" data-slide-to="{{:#index}}" />
+    </div>
+  {{/for}}
+  <input type="hidden" id="album-title" value="{{:name}}">
+</script>
+
+<script type="text/javascript">
+    var apiName = "/Album/lists/list";
+    renderTemplate("album_list", apiName);
+</script>
+
+<script>
+    function showDetail($id) {
+        // thumbnail click event
+        addModalEvent = function(){
+            $(".thumbnail")
+                .css({"cursor":"pointer", "min-height":"88px"})
+                .on('click',function(){
+                    $("#album-image").attr("src", $(this).attr("src"));
+                    var $parent = $(event.target);
+                    setNextPrevIndex($(this).data("slide-to"));
+                    $("#img_modal").modal("show");
+                });
+            $("#page-title").text($("#album-title").val());
+            $("#back-btn").removeClass("hidden");
+        };
+        var apiName = "/Album/lists/detail/?id=" + $id;
+        overrideRender("album_detail", apiName, addModalEvent);
+    }
+
+    function listBack() {
+        //$("#back-btn").addClass("hidden");
+        showPage('album');
+    }
+
+    function changeModalImage() {
+        var nextIndex = $(event.target).data("img-index");
+        $("#album-image").attr("src", $($.find("img[data-slide-to=" + nextIndex + "]")).attr("src")).data("img-index", nextIndex);
+        setNextPrevIndex(nextIndex);
+    }
+
+    function setNextPrevIndex(idx) {
+        var thumbMax = $.find(".thumbnail").length - 1;
+        $("#img-prev").data("img-index", idx == 0 ? thumbMax : idx - 1);
+        $("#img-next").data("img-index", idx == thumbMax ? 0 : idx + 1);
+    }
+</script>

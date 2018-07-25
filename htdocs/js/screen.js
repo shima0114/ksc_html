@@ -17,7 +17,7 @@ function includePage($area, pageName) {
 
 function renderTemplate(targetTmpl, apiName, callBack) {
     //var urlPrefix = "http://funabashiksc.php.xdomain.jp/api/index.php";
-    var urlPrefix = "http://localhost:8082/api";
+    var urlPrefix = "http://localhost:8082/api/index.php";
     // JsRenderテンプレート読み込み
     var $tmpl = $("#" + targetTmpl);
     // JSONを読み込み
@@ -32,4 +32,28 @@ function renderTemplate(targetTmpl, apiName, callBack) {
         console.log("エラー：" + textStatus);
         console.log("テキスト：" + jqXHR.responseText);
     });
+}
+
+function overrideRender(targetTmpl, apiName, callBack) {
+    $("#render_area").empty();
+    renderTemplate(targetTmpl, apiName, callBack);
+}
+
+function renderInformation(targetTmpl, apiName, callBack) {
+    //var urlPrefix = "http://funabashiksc.php.xdomain.jp/api/index.php";
+    var urlPrefix = "http://localhost:8082/api/index.php";
+    // JsRenderテンプレート読み込み
+    var $tmpl = $("#" + targetTmpl);
+    // JSONを読み込み
+    $.getJSON(urlPrefix+ apiName, function(jsonData) {
+        console.log(jsonData);
+        // 読みこんだJSONをテンプレートへ反映し出力
+        $("#info-detail").append($tmpl.render(jsonData));
+        // callBack 実行
+        $(callBack);
+    })
+        .fail(function(jqXHR, textStatus, errorThrown) {
+            console.log("エラー：" + textStatus);
+            console.log("テキスト：" + jqXHR.responseText);
+        });
 }
