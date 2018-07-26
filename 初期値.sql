@@ -182,12 +182,12 @@ insert into glossary_contents (code, title, content) values ('02','かこむ（�
 insert into glossary_contents (code, title, content) values ('02','かたまる（固まる）','ボールの近くに多くのプレーヤーが集まってしまう状態。小学校低学年ではボールのある所に敵・味方とも大勢集まってラグビーのようになる。固まらないで人のいない所に散らばると得をすることをアドバイスし、オープンスペースの使い方を指導する。');
 insert into glossary_contents (code, title, content) values ('02','カバー、カバーリング','パスやシュートを出されやすい地域、味方プレーヤーの背後や移動した後の地域を注意して守ること。味方プレーヤーが相手プレーヤーのボールを奪うためにチャージやタックルをする時に、こぼれ球を奪ったり、抜かれた場合に備えること。味方ディフェンダーが攻撃者に突破されたときに、他のディフェンダーがすぐ守りに行くこと。あるいは、すぐ守りに行けるポジションをとっていること。');
 
-INSERT INTO `kscdb`.`album` (`year`, `title`) VALUES (2007, 'サッカースクール　4期生　（６月２３日グラスポにて）');
-INSERT INTO `kscdb`.`album` (`year`, `title`) VALUES (2007, '第１回キッズリーグ　3期生　第１節（７月２１日）');
-INSERT INTO `kscdb`.`album` (`year`, `title`) VALUES (2007, '第１回キッズリーグ　4期生　第１節（７月２１日）');
-INSERT INTO `kscdb`.`album` (`year`, `title`) VALUES (2007, '第１回キッズリーグ　5期生　第１節（７月２１日）');
-INSERT INTO `kscdb`.`album` (`year`, `title`) VALUES (2007, '７月２８日　1～5期生　グラスポにて中野木ＦＣとの練習試合');
-INSERT INTO `kscdb`.`album` (`year`, `title`) VALUES (2007, 'サッカースクール　4期生　（８月１日グラスポにて）　');
+INSERT INTO album (year, title) VALUES (2007, 'サッカースクール　4期生　（６月２３日グラスポにて）');
+INSERT INTO album (year, title) VALUES (2007, '第１回キッズリーグ　3期生　第１節（７月２１日）');
+INSERT INTO album (year, title) VALUES (2007, '第１回キッズリーグ　4期生　第１節（７月２１日）');
+INSERT INTO album (year, title) VALUES (2007, '第１回キッズリーグ　5期生　第１節（７月２１日）');
+INSERT INTO album (year, title) VALUES (2007, '７月２８日　1～5期生　グラスポにて中野木ＦＣとの練習試合');
+INSERT INTO album (year, title) VALUES (2007, 'サッカースクール　4期生　（８月１日グラスポにて）　');
 
 insert into information (start_at, end_of, detail) values('2015-01-01 00:00:00', '2018-07-25 23:59:59',
 'ホームページの更新が事情により滞っています。<br>
@@ -215,4 +215,4 @@ facebook <a href="https://www.facebook.com/funabashi.ksc" target="_blank">https:
 kowagamasc@yahoo.co.jp　へ連絡いただければご案内いたします。<br>
 facebook <a href="https://www.facebook.com/funabashi.ksc" target="_blank">https://www.facebook.com/funabashi.ksc</a><br>
 予定表　<a href="http://freecalend.com/open/mem33650" target="_blank">http://freecalend.com/open/mem33650</a><br>
-')
+');

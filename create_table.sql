@@ -71,7 +71,7 @@ create table glossary_contents (
 create table album (
   id int(3) auto_increment,
   year int(4) not null,
-  title varchr(50) not null,
+  title varchar(50) not null,
   primary key (id)
 ) engine=InnoDB;
 create index idx_album_year on album (year);
