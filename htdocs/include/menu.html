@@ -1,0 +1,60 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+            <div class="navbar-header">
+                <!--ハンバーガー-->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-content">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--Top Logo-->
+                <a class="navbar-brand nav-logo" href="/"></a>
+            </div>
+
+            <div id="nav-content" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">指導理念</a></li>
+                    <!--クラブ-->
+                    <li class="dropdown">
+                        <a href="#" class="collapse dropdown-toggle" data-toggle="dropdown" href="">クラブ<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/?p=staff" class="nav-close">スタッフ</a></li>
+                            <li><a href="/?p=player" class="nav-close">選手</a></li>
+                            <li><a href="/?p=join" class="nav-close">入会案内</a></li>
+                            <li><a href="/?p=album" class="nav-close">アルバム</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="collapse dropdown-toggle" data-toggle="dropdown" href="">予定<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="http://freecalend.com/open/mem33650" class="nav-close" target="_blank">カレンダー</a></li>
+                            <li><a href="/?p=match_result" class="nav-close">試合予定/結果</a></li>
+                            <li><a href="/?p=in_production" class="nav-close">ウエスタンリーグ</a></li>
+                        </ul>
+                    </li>
+                    <!--その他-->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" href="">その他<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/?p=glossary" class="nav-close">用語集</a></li>
+                            <li><a href="/?p=in_production" class="nav-close">情報室</a></li>
+                            <li><a href="/?p=in_production" class="nav-close">連絡</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/?p=link" class="nav-close">LINK</a></li>
+                            <li class="divider"></li>
+                        </ul>
+                    </li>
+                    <li><a href="/?p=in_production" class="nav-close">問い合わせ</a></li>
+                </ul>
+            </div>
+    </div>
+  </nav>
+<script>
+    $(document).ready(function () {
+        $(".nav-close").click(function(event) {
+            $(".navbar-collapse").collapse('hide');
+        });
+    });
+</script>

@@ -1,0 +1,111 @@
+<link rel="stylesheet" href="/css/responsive_table.css" type="text/css">
+<header>
+    <div class="page-header">
+        <h3>試合結果・予定</h3>
+    </div>
+</header>
+<div class="container-fluid">
+    <!-- 行全体の開始 -->
+    <div id="render_area"></div>
+    <!--<div class="table-responsive">
+        <div class="bg-info">
+            <div>船橋選手権・予選（4/7〜7/18）</div>
+        </div>
+        <table class="table table-hover table-bordered">
+            <thead class="responsive-fonts">
+                <tr>
+                    <th></th>
+                    <th>八栄ＦＣ</th>
+                    <th>咲が丘ＳＣ</th>
+                    <th>ＫＳＣブルー</th>
+                    <th>中野木ＦＣ<br>ビクトリー</th>
+                    <th>行田西ＦＣ</th>
+                </tr>
+            </thead>
+            <tbody class="responsive-fonts text-center">
+                <tr>
+                    <td>八栄ＦＣ</td>
+                    <td>-</td>
+                    <td>1 - 0<div>○</div></td>
+                    <td>5 - 0<div>○</div></td>
+                    <td>0 - 1<div>●</div></td>
+                    <td>2 - 1<div>○</div></td>
+                </tr>
+                <tr>
+                    <td>咲が丘ＳＣ</td>
+                    <td>0 - 1<div>●</div></td>
+                    <td>-</td>
+                    <td>1 - 1<div>△</div></td>
+                    <td>3 - 0<div>○</div></td>
+                    <td>1 - 3<div>●</div></td>
+                </tr>
+                <tr>
+                    <td>ＫＳＣブルー</td>
+                    <td>0 - 5<div>●</div></td>
+                    <td>1 - 1<div>△</div></td>
+                    <td>-</td>
+                    <td>1 - 0<div>○</div></td>
+                    <td>1 - 0<div>○</div></td>
+                </tr>
+                <tr>
+                    <td>中野木ＦＣ<br>ビクトリー</td>
+                    <td>1 - 0<div>○</div></td>
+                    <td>0 - 3<div>●</div></td>
+                    <td>0 - 1<div>●</div></td>
+                    <td>-</td>
+                    <td>0 - 0<div>△</div></td>
+                </tr>
+                <tr>
+                    <td>行田西ＦＣ</td>
+                    <td>1 - 2<div>●</div></td>
+                    <td>3 - 1<div>○</div></td>
+                    <td>0 - 1<div>●</div></td>
+                    <td>0 - 0<div>△</div></td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>-->
+    <!-- 行全体の終了 -->
+</div>
+
+<!-- JsRender template -->
+<script id="match_result" type="text/x-jsrender">
+  {{for results}}
+    <div class="bg-success">
+        <h5>{{:year}}<br>（{{:grade}}）</h5>
+    </div>
+    {{for match}}
+    <div class="ext-table-responsive">
+        <div class="bg-info">
+            <div>{{:name}}（{{:schedule}}）</div>
+        </div>
+        <table class="table table-hover table-bordered">
+            <thead class="responsive-fonts">
+                <tr>
+                    <th scope="col"></th>
+                    {{for teamResult}}
+                    <th scope="col">{{:teamName}}</th>
+                    {{/for}}
+                </tr>
+            </thead>
+            <tbody class="responsive-fonts text-center">
+            {{for teamResult}}
+                <tr>
+                    <td scope="row">{{:teamName}}</td>
+                    {{for result}}
+                    <td aria-label="{{:rival}}">{{:score}}<div>{{:mark}}</div></td>
+                    {{/for}}
+                </tr>
+            {{/for}}
+            </tbody>
+        </table>
+    </div>
+    {{/for}}
+  {{/for}}
+</script>
+<script>
+    var apiName = "/Match/result/list";
+    // JsRenderテンプレート読み込み
+    renderTemplate("match_result", apiName);
+</script>
